@@ -40,6 +40,7 @@
                 </ul>
               
               </div>
+              @livewire('login')
             </div>
           </nav>
 
