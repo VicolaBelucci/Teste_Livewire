@@ -34,10 +34,9 @@
 
         <tfoot>
             <tr colspan="4">
-                {{-- <td>{{$users->links()}}</td> --}}
+                <td>{{$users->links()}}</td>
             </tr>
         </tfoot>
       </table>
 
-      {{ $users->links() }}
 </div>
