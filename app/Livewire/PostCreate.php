@@ -19,17 +19,11 @@ class PostCreate extends Component
 
     public function mount()
     {
-        // $this->title = "Saaalve";
+
     }
 
     public function create()
     {
-
-        // $this->validate([
-        //     'title' => 'required|min: 3',
-        //     'content' => 'required|min:10'
-        // ]);
-
         $this->validate();
 
         sleep(2);

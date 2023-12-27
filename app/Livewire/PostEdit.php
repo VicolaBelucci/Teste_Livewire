@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Post;
+use App\Models\User;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -24,6 +25,7 @@ class PostEdit extends Component
 
     public function mount()
     {
+        
         $this->title = $this->post->title;
         $this->content = $this->post->content;
 
@@ -31,12 +33,13 @@ class PostEdit extends Component
 
     public function updatedPhoto()
     {
-        $this->validate([
-            'photo' => 'nullable|image|max:1024', // Aqui a validação é aplicada diretamente
-        ]);
+        // $this->validate([
+        //     'photo' => 'nullable|image|max:1024', // Aqui a validação é aplicada diretamente
+        // ]);
 
-        if ($this->photo && !in_array($this->photo->extension(), ['png', 'jpeg', 'jpg', 'svg'])) {
+        if (!in_array($this->photo->extension(), ['png', 'jpeg', 'jpg', 'svg'])) {
             $this->photo = null;
+            // dd($this->photo, 'hey');
             session()->flash('photo-error', 'A extensão do arquivo não é válida.');
         }
     }
@@ -55,14 +58,24 @@ class PostEdit extends Component
             'content' => $this->content,
             'photo' => $this->photo ? $this->photo->store('photos', 'public') : $this->post->photo,
         ]);
-        // dd('salve');    
 
-        $this->js(<<<JS
-            swal.fire('Post updated successfully','', 'success')
-        JS);
+        // $user_post = $this->post->user;
 
-        sleep(5);
+        User::where('id', 3)->update([
+            'photo' => $this->photo ? $this->photo->store('photos', 'public') : $this->post->photo,
+        ]);
+
+        // dd($user_post->id);    
+
+       
+
+        session()->flash('success', 'Post editado meu parssa!!');
+
         $this->redirect('/post', navigate:true);
+
+        // $this->js(<<<JS
+        //     swal.fire('Post updated successfully','', 'success')
+        //     JS);
     }
 
     public function render()

@@ -29,6 +29,9 @@
                             
                             <div class="row">
                                 <div class="mt-2">
+                                    @if($post->photo && !$photo)
+                                        <img src="{{asset('storage/'.$post->photo)}}" width="100%">
+                                    @endif
                                     @if($photo)
                                         <img src="{{ $photo->temporaryUrl() }}" width="100%">
                                     @endif
@@ -56,7 +59,7 @@
                                         
 
                                             <div class="input-group mt-3">
-                                                <input type="file" wire:model='photo' name="photo">
+                                                <input type="file" wire:model.live='photo' name="photo">
                                             </div>
 
                                         </div>
