@@ -12,7 +12,6 @@
 
                 <div class="form-outline w-100">
                     <textarea wire:model="comment" name="" id="textAreaExample" cols="30" rows="4" class="form-control"></textarea>
-                    <label for="textAreaExample" class="form-label">Message</label>
                 </div>
             </div>
             <div class="float-end mt-2 pt-1">
