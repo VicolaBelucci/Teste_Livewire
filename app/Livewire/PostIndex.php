@@ -13,7 +13,7 @@ class PostIndex extends Component
     public function render()
     {   
         // auth()->logout();
-        // auth()->loginUsingId(1);
+        auth()->loginUsingId(1);
         // dd(auth()->id());
         $this->posts = Post::all();
         return view('livewire.post-index');

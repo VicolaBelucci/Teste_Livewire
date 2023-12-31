@@ -5,10 +5,13 @@
             <input wire:model.live = 'search' type="search" class="form-control form-control-lg rounded" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
         </div>
     </div>
-    <p class="mb-0 d-flex flex-row align-self-center" style="color: #939597;">
-        <span class="font-weight-bold pe-1">{{$users->count()}}</span>
-        Results
-    </p>
+    <div class="container-fluid d-flex justify-content-between">
+        <p class="mb-0" style="color: #939597;">
+            <span class="font-weight-bold pe-1">{{$users->count()}}</span>
+            Results
+        </p>
+        @livewire('user.create-user')
+    </div>
     <div wire:loading wire:target='search'>
         Procurando...
     </div>

@@ -16,6 +16,8 @@ class UserIndex extends Component
     #[Url(as: 'search', keep:false)] //Estes atributos são para manter a pesquisa na URL da página
     public $search;
 
+    protected $listeners = ['refresh-user'=> '$refresh'];
+
     public function updatedSearch()
     {
         $this->resetPage();
@@ -30,7 +32,7 @@ class UserIndex extends Component
     {
 
         if(!$this->search){
-            $users = User::paginate(5);
+            $users = User::paginate(15);
         }else{
             $users = User::where(function($query){
                 $query->where('name', 'like','%'.$this->search.'%')
