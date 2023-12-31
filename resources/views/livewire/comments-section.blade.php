@@ -7,6 +7,11 @@
         </div>
     </section>
 
+    {{-- <div x-data>
+        <button @click="$dispatch('show-text')">ai ze da manga</button>
+    </div> --}}
+
+ {{-- <input x-mask:dynamic="$money($input, ',')">  --}}
     <div class="container my-5 py-5">
         <div class="row d-flex">
             <div class="col-md-12 col-lg-10 col-xl-8">

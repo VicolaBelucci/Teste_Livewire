@@ -41,6 +41,8 @@
             </section>
         </div>
     </div>
+    
+    @livewire('teste')
 
     @if(auth()->guest())
     Você precisa estar logado...
