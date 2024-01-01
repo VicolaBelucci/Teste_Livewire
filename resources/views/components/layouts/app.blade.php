@@ -11,15 +11,6 @@
         
     </head>
     <body>
-        {{-- <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{route('user.index')}}">Users</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{route('post.index')}}">Posts</a>
-            </li>
-        
-          </ul> --}}
           <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
               

@@ -45,6 +45,28 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'role_id');
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function hasRole(string $role)
+    {
+        return $this->roles()->whereName($role)->exists();
+    }
+
+    public function hasRoles(array $nomes)
+    {
+        return $this->roles()->whereIn('name', $nomes)->exists();
+    }
+
+    public function hasPermission(string $permission)
+    {
+        return $this->roles->filter( fn($role)=> $role->permissions()->whereName($permission)->exists())->count();
+
+        /*
+            Busca todas as roles do usuário e busca todas as permissões de cada role, verificando se a permissão
+            passada no parâmetro existe em alguma dessas roles, caso existir, o método count() retorna o número 
+            de roles que possuem aquela permissão e, se existir, é diferente de 0, podendo ser considerado como 
+            'true'. 
+        */
     }
 }
