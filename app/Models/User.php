@@ -60,7 +60,12 @@ class User extends Authenticatable
 
     public function hasPermission(string $permission)
     {
-        return $this->roles->filter( fn($role)=> $role->permissions()->whereName($permission)->exists())->count();
+        // return $this->roles->filter( fn($role)=> $role->permissions()->whereName($permission)->exists())->count();
+        return $this->roles()
+            ->whereHas('permissions', function($query) use ($permission){
+                $query->whereName($permission);
+            })
+            ->count();
 
         /*
             Busca todas as roles do usuário e busca todas as permissões de cada role, verificando se a permissão

@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <form action="{{route('login')}}" method="POST">
+    <form action="{{route('home')}}" method="POST">
         @csrf
         <div class="card-body text-center">
             <div class="mt-0 md:mt-0 md:col-span-4">
